@@ -17,51 +17,83 @@ struct MainContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 0.0) {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
+                    LazyHStack {
                         ForEach(topicVM.topics) { topic in
                             Button(action: {
-                                
+                                changeTopic(topicId: topic.id)
                             }, label: {
                                 Text(topic.title)
                                     .foregroundColor(.black)
                                     .font(.body)
+                                    //.frame(height: 20, alignment: .topLeading)
                             })
-                        }
-                    }
-                }
-                .background(Color.orange)
-                ScrollView(.vertical) {
-                    VStack {
-                        if photoVM.photos.count > 0 {
-                            ForEach(Range(0...photoVM.photos.count - 1)) { index in
-                                ForEach(photoVM.photos[index]!) { photo in
-                                    Button(action: {
-                                        
-                                    }, label: {
-                                        if let photoUrl = photo.urls.raw {
-                                            let _ = print("\(photo.user.name) / \(photo.sponsorship?.sponsor.name)")
-                                            PhotoView(withURL: photoUrl, pictureName: photo.user.name, sponsorName: photo.sponsorship?.sponsor.name)
-                                        }
-                                    })
+                            .onAppear() {
+                                if topic.id == topicVM.topics.last?.id {
+                                    topicVM.getTopic()
                                 }
                             }
                         }
                     }
                 }
-                .background(Color.green)
+                .frame(height: 30, alignment: .topLeading)
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVStack(spacing: 0.0) {
+                        ForEach(photoVM.photos) { photo in
+                            Button(action: {
+                                
+                            }, label: {
+                                if let photoUrl = photo.urls.raw {
+                                    PhotoView(withURL: photoUrl, pictureName: photo.user.name, sponsorName: photo.sponsorship?.sponsor.name)
+                                }
+                            })
+                            .onAppear() {
+                                if photo == photoVM.photos.last {
+                                    photoVM.getPhoto(topic: topicVM.topics[topicIndex].id)
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+                // List 형태의 Stack
+                /*
+                List(photoVM.photos) { photo in
+                    LazyVStack(spacing: 0.0) {
+                        Button(action: {
+                            
+                        }, label: {
+                            if let photoUrl = photo.urls.raw {
+                                PhotoView(withURL: photoUrl, pictureName: photo.user.name, sponsorName: photo.sponsorship?.sponsor.name)
+                            }
+                        })
+                        .onAppear() {
+                            if photo == photoVM.photos.last {
+                                photoVM.getPhoto(topic: topicVM.topics[topicIndex].id)
+                            }
+                        }
+                        
+                        .listRowInsets(.init())
+                    }
+                }
+ */
+                
             }
-            .background(Color.red)
             .navigationTitle("Unsplash")
             .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear(perform: {
-            topicVM.fetchTopic()
+            topicVM.getTopic()
         })
         .onReceive(topicVM.publisher) { topicId in
-            photoVM.fetchPhoto(with: topicId)
+            photoVM.getPhoto(topic: topicId)
         }
+    }
+    
+    func changeTopic(topicId: String) {
+        self.topicIndex = topicIndex
+        self.photoVM.getPhoto(topic: topicVM.topics[topicIndex].id)
     }
 }
 

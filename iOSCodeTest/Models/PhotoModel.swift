@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PhotoModel: Codable, Identifiable {
+struct PhotoModel: Codable, Identifiable, Equatable {
     let id: String
     let createdAt: String
     let updatedAt: String
@@ -39,6 +39,9 @@ struct PhotoModel: Codable, Identifiable {
         case sponsorship
     }
 
+    static func == (lhs: PhotoModel, rhs: PhotoModel) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 struct PhotoUrlModel: Codable {

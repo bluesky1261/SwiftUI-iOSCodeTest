@@ -25,6 +25,8 @@
 		622A6F0526A48D2600975103 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622A6F0426A48D2600975103 /* PhotoViewModel.swift */; };
 		626A027D26A54DA20018F3FE /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A027C26A54DA20018F3FE /* PhotoView.swift */; };
 		626A028026A5500D0018F3FE /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A027F26A5500D0018F3FE /* ImageLoader.swift */; };
+		62CA89EA26A86DD5008CAA2A /* PhotoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CA89E926A86DD5008CAA2A /* PhotoListView.swift */; };
+		62CA89ED26A939EA008CAA2A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CA89EC26A939EA008CAA2A /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		622A6F0426A48D2600975103 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		626A027C26A54DA20018F3FE /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		626A027F26A5500D0018F3FE /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		62CA89E926A86DD5008CAA2A /* PhotoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListView.swift; sourceTree = "<group>"; };
+		62CA89EC26A939EA008CAA2A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 			children = (
 				622A6EEA26A4691700975103 /* MainContentView.swift */,
 				626A027C26A54DA20018F3FE /* PhotoView.swift */,
+				62CA89E926A86DD5008CAA2A /* PhotoListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 		622A6EEB26A4691800975103 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				62CA89EB26A939DD008CAA2A /* Network */,
 				626A027E26A54FD20018F3FE /* Utilities */,
 				622A6EEC26A4691800975103 /* Constants */,
 				622A6EEF26A4691800975103 /* Extensions */,
@@ -180,6 +186,14 @@
 				626A027F26A5500D0018F3FE /* ImageLoader.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		62CA89EB26A939DD008CAA2A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				62CA89EC26A939EA008CAA2A /* Router.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,11 +281,13 @@
 				622A6ED526A467A700975103 /* iOSCodeTestApp.swift in Sources */,
 				622A6EFB26A4691800975103 /* Server.swift in Sources */,
 				622A6F0326A48C1500975103 /* PhotoService.swift in Sources */,
+				62CA89ED26A939EA008CAA2A /* Router.swift in Sources */,
 				626A027D26A54DA20018F3FE /* PhotoView.swift in Sources */,
 				622A6EFC26A4691800975103 /* Codable+Extension.swift in Sources */,
 				622A6F0526A48D2600975103 /* PhotoViewModel.swift in Sources */,
 				622A6EF926A4691800975103 /* MainContentView.swift in Sources */,
 				622A6EFD26A4691800975103 /* ServiceProtocol.swift in Sources */,
+				62CA89EA26A86DD5008CAA2A /* PhotoListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

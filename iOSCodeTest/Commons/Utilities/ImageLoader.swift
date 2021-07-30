@@ -9,15 +9,12 @@ import SwiftUI
 import Combine
 
 class ImageLoader: ObservableObject {
-    var didChange = PassthroughSubject<Data, Never>()
-    var data = Data() {
-        didSet {
-            didChange.send(data)
-        }
-    }
+    var publishser = PassthroughSubject<Data, Never>()
 
     init(urlString:String) {
         guard var urlComponent = URLComponents(string: urlString) else { return }
+        
+        // 파라미터 셋팅
         var parameters = [URLQueryItem]()
         parameters.append(URLQueryItem(name: "w", value: "\(Int(UIScreen.main.bounds.size.width))"))
         parameters.append(URLQueryItem(name: "dpr", value: "\(Int(UIScreen.main.scale))"))
@@ -31,7 +28,7 @@ class ImageLoader: ObservableObject {
             let task = URLSession.shared.dataTask(with: URLRequest(url: componentUrl)) { data, response, error in
                 guard let data = data else { return }
                 DispatchQueue.main.async {
-                    self.data = data
+                    self.publishser.send(data)
                 }
             }
             task.resume()
@@ -39,7 +36,7 @@ class ImageLoader: ObservableObject {
             let task = URLSession.shared.dataTask(with: URL(string: urlString)!) { data, response, error in
                 guard let data = data else { return }
                 DispatchQueue.main.async {
-                    self.data = data
+                    self.publishser.send(data)
                 }
             }
             task.resume()

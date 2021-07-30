@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserModel: Codable, Identifiable {
+struct UserModel: Codable, Identifiable, Equatable {
     let id: String
     let username: String
     let name: String
@@ -20,6 +20,10 @@ struct UserModel: Codable, Identifiable {
     let instagram_username: String?
     let twitter_username: String?
     let profile_image: UserProfileImage
+    
+    static func == (lhs: UserModel, rhs: UserModel) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 struct UserProfileImage: Codable {

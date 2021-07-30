@@ -20,27 +20,9 @@ struct PhotoView: View {
             Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .onReceive(imageLoader.didChange) { data in
+                .onReceive(imageLoader.publishser) { data in
                     self.image = UIImage(data: data) ?? UIImage()
                 }
-            /*
-            VStack(alignment: .leading) {
-                let _ = print("*** pictureName: \(pictureName) / sponsorName: \(sponsorName)")
-                if let pictureName = pictureName {
-                    Text(pictureName)
-                        .foregroundColor(.white)
-                    if let sponsorName = sponsorName {
-                        if pictureName == sponsorName {
-                            Text("Sponsored")
-                                .foregroundColor(.white)
-                        } else {
-                            Text("Sponsored by \(sponsorName)")
-                                .foregroundColor(.white)
-                        }
-                    }
-                }
-            }
-             */
         }
     }
 

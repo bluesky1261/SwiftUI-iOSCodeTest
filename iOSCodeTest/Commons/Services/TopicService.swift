@@ -10,6 +10,7 @@ import Alamofire
 
 typealias TopicListCompletionHandler = ([TopicModel]?) -> Void
 
+// TODO: Router 처리
 class TopicService {
     static let shared = TopicService()
     

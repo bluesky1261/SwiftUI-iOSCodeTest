@@ -7,24 +7,35 @@
 
 import Foundation
 import Combine
+import Alamofire
 
 class TopicViewModel: ObservableObject {
     @Published var topics = [TopicModel]()
     var publisher = PassthroughSubject<String, Never>()
     
-    private let topicService = TopicService.shared
+    private var currentPage: Int = 0
+    private var isLoading: Bool = false
+    private var subscriptions = Set<AnyCancellable>()
     
-    func fetchTopic(page: Int = 0) {
-        topicService.getTopicList(page: page) { topicModel in
-            
-            guard let topicModel = topicModel, let selectedTopic = topicModel.first else { return }
-            
-            // Topic을 Publish함
-            self.publisher.send(selectedTopic.id)
-            
-            DispatchQueue.main.async {
-                self.topics = topicModel
+    // Get Topic Combine
+    func getTopic() {
+        guard !isLoading else { return }
+        self.isLoading = true
+        
+        self.currentPage += 1
+        let parameters: [String: String] = ["page": "\(self.currentPage)", "client_id": Server.API_ACCESS_KEY]
+
+        AF.request(Server.LIST_TOPIC_URL, method: .get, parameters: parameters)
+            .validate()
+            .publishDecodable(type: [TopicModel].self)
+            .sink { response in
+                self.isLoading = false
+                guard response.error == nil, let result = response.value else { return }
+                
+                self.topics.append(contentsOf: result)
+                self.publisher.send(result.first?.id ?? "")
             }
-        }
+            .store(in: &subscriptions)
     }
+    
 }
