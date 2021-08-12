@@ -14,6 +14,7 @@ struct PhotoView: View {
     init(withURL url:String, pictureName: String?, sponsorName: String?) {
         self.imageLoader = ImageLoader(urlString:url)
     }
+    
 
     var body: some View {
         ZStack {
@@ -23,6 +24,7 @@ struct PhotoView: View {
                 .onReceive(imageLoader.publishser) { data in
                     self.image = UIImage(data: data) ?? UIImage()
                 }
+                .background(Color.red)
         }
     }
 

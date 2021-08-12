@@ -57,28 +57,6 @@ struct MainContentView: View {
                         
                     }
                 }
-                // List 형태의 Stack
-                /*
-                List(photoVM.photos) { photo in
-                    LazyVStack(spacing: 0.0) {
-                        Button(action: {
-                            
-                        }, label: {
-                            if let photoUrl = photo.urls.raw {
-                                PhotoView(withURL: photoUrl, pictureName: photo.user.name, sponsorName: photo.sponsorship?.sponsor.name)
-                            }
-                        })
-                        .onAppear() {
-                            if photo == photoVM.photos.last {
-                                photoVM.getPhoto(topic: topicVM.topics[topicIndex].id)
-                            }
-                        }
-                        
-                        .listRowInsets(.init())
-                    }
-                }
- */
-                
             }
             .navigationTitle("Unsplash")
             .navigationBarTitleDisplayMode(.inline)

@@ -7,27 +7,33 @@
 
 import SwiftUI
 
-struct PhotoListView<Data, Content>: View
-where Data: RandomAccessCollection, Data.Element: Identifiable, Content: View {
-    @Binding var data: Data
-    @Binding var isLoading: Bool
+struct PhotoListView<Content>: View where Content: View {
+    //@Binding var data: Data
+    @ObservedObject private var photoVM = PhotoViewModel()
+    var topicId: String
     
-    let loadMore: () -> Void
-    let content: (Data.Element) -> Content
+    //let loadMore: () -> Void
+    let content: (PhotoModel) -> Content
     
-    init (data: Binding<Data>
-        , isLoading: Binding<Bool>
-        , loadMore: @escaping () -> Void
-        , @ViewBuilder content: @escaping (Data.Element) -> Content) {
-        _data = data
-        _isLoading = isLoading
-        self.loadMore = loadMore
+    init (topicId: String
+        , @ViewBuilder content: @escaping (PhotoModel) -> Content) {
+        //_data = data
+        //_isLoading = isLoading
+        self.topicId = topicId
+        //self.loadMore = loadMore
         self.content = content
     }
     
     var body: some View {
         List {
-            ForEach(0..<data.count) { index in
+            ForEach(photoVM.photos) { photo in
+                content(photo)
+                    .onAppear {
+                        if photo == photoVM.photos.last {
+                            photoVM.getPhoto(topic: topicId)
+                        }
+                    }
+            }
                 /*
                 ForEach(data[index]) { photo in
                     Button(action: {
@@ -47,7 +53,6 @@ where Data: RandomAccessCollection, Data.Element: Identifiable, Content: View {
                     })
                 }
  */
-            }
         }
     }
 }
