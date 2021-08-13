@@ -13,5 +13,16 @@ struct AppEnvironment {
 }
 
 extension AppEnvironment {
+    static func bootStrap() -> AppEnvironment {
+        let appState = Store<AppState>(AppState())
+        let services = configureServices()
+        let diContainer = DIContainer(appState: appState, services: services)
+        
+        return AppEnvironment(container: diContainer)
+    }
     
+    private static func configureServices() -> DIContainer.Services {
+        let photoService = PhotoServiceImpl()
+        return .init(photoService: photoService)
+    }
 }

@@ -11,7 +11,8 @@ import SwiftUI
 struct iOSCodeTestApp: App {
     var body: some Scene {
         WindowGroup {
-            MainContentView()
+            let environment: AppEnvironment = AppEnvironment.bootStrap()
+            MainContentView(viewModel: MainContentViewModel(container: environment.container))
         }
     }
 }
