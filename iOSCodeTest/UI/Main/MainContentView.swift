@@ -12,7 +12,7 @@ struct MainContentView: View {
     
     var body: some View {
         TabView {
-            PhotoMainView()
+            PhotoMainView(viewModel: .init(container: viewModel.container))
                 .tabItem {
                     Text("Photo")
                 }

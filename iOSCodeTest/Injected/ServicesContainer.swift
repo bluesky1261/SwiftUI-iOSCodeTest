@@ -7,14 +7,16 @@
 
 extension DIContainer {
     struct Services {
+        let topicService: TopicService
         let photoService: PhotoService
         
-        init(photoService: PhotoService) {
+        init(topicService: TopicService, photoService: PhotoService) {
+            self.topicService = topicService
             self.photoService = photoService
         }
         
         static var stub: Self {
-            .init(photoService: PhotoServiceStub())
+            .init(topicService: TopicServiceStub(), photoService: PhotoServiceStub())
         }
     }
 }

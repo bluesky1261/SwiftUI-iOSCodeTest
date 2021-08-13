@@ -22,7 +22,8 @@ extension AppEnvironment {
     }
     
     private static func configureServices() -> DIContainer.Services {
+        let topicService = TopicServiceImpl()
         let photoService = PhotoServiceImpl()
-        return .init(photoService: photoService)
+        return .init(topicService: topicService, photoService: photoService)
     }
 }

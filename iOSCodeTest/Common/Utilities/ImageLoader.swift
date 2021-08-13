@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 class ImageLoader: ObservableObject {
-    var publishser = PassthroughSubject<Data, Never>()
+    var publisher = PassthroughSubject<Data, Never>()
 
     init(urlString:String) {
         guard var urlComponent = URLComponents(string: urlString) else { return }
@@ -28,7 +28,7 @@ class ImageLoader: ObservableObject {
             let task = URLSession.shared.dataTask(with: URLRequest(url: componentUrl)) { data, response, error in
                 guard let data = data else { return }
                 DispatchQueue.main.async {
-                    self.publishser.send(data)
+                    self.publisher.send(data)
                 }
             }
             task.resume()
@@ -36,7 +36,7 @@ class ImageLoader: ObservableObject {
             let task = URLSession.shared.dataTask(with: URL(string: urlString)!) { data, response, error in
                 guard let data = data else { return }
                 DispatchQueue.main.async {
-                    self.publishser.send(data)
+                    self.publisher.send(data)
                 }
             }
             task.resume()
