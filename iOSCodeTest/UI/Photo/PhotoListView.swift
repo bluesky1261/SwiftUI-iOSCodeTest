@@ -32,18 +32,13 @@ struct PhotoListView: View {
 // MARK: - Loading Content
 private extension PhotoListView {
     var notRequestedView: some View {
-        Text("Photo List").onAppear {
+        Text("").onAppear {
             self.viewModel.getPhoto()
         }
     }
     
     var loadingView: some View {
-        VStack {
-            //ActivityIndicatorView()
-            Button(action: {
-                self.viewModel.photos.cancelLoading()
-            }, label: { Text("Cancel loading") })
-        }
+        Text("")
     }
     
     func failedView(_ error: Error) -> some View {
@@ -55,26 +50,44 @@ private extension PhotoListView {
 private extension PhotoListView {
     func loadedView(topic: TopicModel, photos: [PhotoModel]) -> some View {
         ScrollView {
-            LazyVStack {
+            LazyVStack(spacing: 0.0) {
                 ForEach(photos) { photo in
-                    let imageLoader = ImageLoader(urlString:photo.urls.raw!)
                     Button(action: {
                     
                     }, label: {
-                        Text(photo.id)
-                        /*
-                        Image(uiImage: UIImage())
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .onReceive(imageLoader.publisher) { data in
-                                self.image = UIImage(data: data) ?? UIImage()
-                            }
- */
-
+                        PhotoImage(urlString: photo.urls.raw!) {
+                            Text("")
+                        }
+                        .aspectRatio(contentMode: .fit)
                     })
                 }
             }
-            .frame(height: 30, alignment: .topLeading)
+        }
+    }
+}
+
+struct PhotoImage<Placeholder: View>: View {
+    @StateObject private var imageLoader: ImageLoader
+    private let placeholder: Placeholder
+    
+    init(urlString: String, @ViewBuilder placeholder: () -> Placeholder) {
+        self.placeholder = placeholder()
+        _imageLoader = StateObject(wrappedValue: ImageLoader(urlString:urlString))
+    }
+    
+    var body: some View {
+        content
+            .onAppear(perform: imageLoader.loadImage)
+    }
+    
+    private var content: some View {
+        Group {
+            if imageLoader.image != nil {
+                Image(uiImage: imageLoader.image!)
+                    .resizable()
+            } else {
+                placeholder
+            }
         }
     }
 }

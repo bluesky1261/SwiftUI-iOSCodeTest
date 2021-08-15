@@ -39,11 +39,11 @@ private extension PhotoMainView {
     }
     
     var loadingView: some View {
-        Text("isLoading")
+        Text("")
     }
     
     var failedView: some View {
-        Text("failed")
+        Text("")
     }
 }
 

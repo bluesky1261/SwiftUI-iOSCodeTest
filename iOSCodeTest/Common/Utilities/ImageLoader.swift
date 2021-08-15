@@ -7,12 +7,18 @@
 
 import SwiftUI
 import Combine
+import Alamofire
 
 class ImageLoader: ObservableObject {
-    var publisher = PassthroughSubject<Data, Never>()
+    @Published var image: UIImage?
+    private let cancelBag = CancelBag()
+    private let imageURL: URL?
 
     init(urlString:String) {
-        guard var urlComponent = URLComponents(string: urlString) else { return }
+        guard var urlComponent = URLComponents(string: urlString) else {
+            self.imageURL = nil
+            return
+        }
         
         // 파라미터 셋팅
         var parameters = [URLQueryItem]()
@@ -24,22 +30,38 @@ class ImageLoader: ObservableObject {
         
         urlComponent.queryItems = parameters
         
-        if let componentUrl = urlComponent.url {
-            let task = URLSession.shared.dataTask(with: URLRequest(url: componentUrl)) { data, response, error in
-                guard let data = data else { return }
+        self.imageURL = urlComponent.url
+    }
+    
+    func loadImage() {
+        if let imageURL = imageURL {
+            // Image From Cache
+            if let cacheImage = ImageCache.shared.getImage(identifier: imageURL.absoluteString) {
                 DispatchQueue.main.async {
-                    self.publisher.send(data)
+                    self.image = cacheImage
                 }
+            } else {
+                AF.request(imageURL)
+                    .validate()
+                    .publishData()
+                    .receive(on: DispatchQueue.main)
+                    .sink(receiveValue: { [weak self] response in
+                        guard let data = response.value, let image = UIImage(data: data) else {
+                            print("Image Fetch Error Occurred")
+                            return
+                        }
+                        
+                        self?.image = image
+                        ImageCache.shared.add(image: image, identifier: imageURL.absoluteString)
+                    })
+                    .store(in: cancelBag)
             }
-            task.resume()
         } else {
-            let task = URLSession.shared.dataTask(with: URL(string: urlString)!) { data, response, error in
-                guard let data = data else { return }
-                DispatchQueue.main.async {
-                    self.publisher.send(data)
-                }
-            }
-            task.resume()
+            print("*** Image URL Error")
         }
+    }
+    
+    func cancelImage() {
+        cancelBag.cancel()
     }
 }

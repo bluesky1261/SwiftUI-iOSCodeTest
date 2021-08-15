@@ -31,7 +31,6 @@ struct PhotoServiceImpl: PhotoService {
         AF.request(urlByTopic, method: .get, parameters: parameters)
             .validate()
             .publishDecodable(type: [PhotoModel].self)
-            .print()
             .sink(receiveCompletion: { subscriptionCompletion in
                 if let error = subscriptionCompletion.error {
                     photos.wrappedValue = .failed(error)
