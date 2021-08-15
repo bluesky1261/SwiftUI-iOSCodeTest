@@ -16,7 +16,8 @@ struct AppState: Equatable {
 // MARK: - Extension: ViewRouting
 extension AppState {
     struct ViewRouting: Equatable {
-    
+        var photoMain = PhotoMainRouting()
+        var photoDetail = PhotoDetailRouting()
     }
 }
 

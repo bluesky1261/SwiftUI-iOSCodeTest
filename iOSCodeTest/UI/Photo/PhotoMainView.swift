@@ -26,7 +26,7 @@ struct PhotoMainView: View {
             return AnyView(loadingView)
         case let .loaded(topics):
             return AnyView(loadedView(topics))
-        case let .failed(error):
+        case let .failed(_):
             return AnyView(failedView)
         }
     }

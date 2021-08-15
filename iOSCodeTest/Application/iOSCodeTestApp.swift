@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct iOSCodeTestApp: App {
+    @StateObject var environmentObject = SharedObjects()
+    
     var body: some Scene {
         WindowGroup {
             let environment: AppEnvironment = AppEnvironment.bootStrap()
             MainContentView(viewModel: MainContentViewModel(container: environment.container))
+                .environmentObject(environmentObject)
         }
     }
 }

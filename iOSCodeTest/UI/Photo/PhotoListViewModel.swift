@@ -13,7 +13,7 @@ class PhotoListViewModel: ObservableObject {
     @Published var photos: Loadable<[PhotoModel]>
     
     let container: DIContainer
-    private var cancelBag = CancelBag()
+    private let cancelBag = CancelBag()
     
     init(container: DIContainer, topic: TopicModel, photos: Loadable<[PhotoModel]> = .notRequested) {
         self.topic = topic

@@ -8,14 +8,21 @@
 import SwiftUI
 import Combine
 
+struct PhotoMainRouting: Equatable {
+    var photoDetail: Int?
+}
+
 class PhotoMainViewModel: ObservableObject {
-    
+    @Published var routingState: PhotoMainRouting
     @Published var topics: Loadable<[TopicModel]>
     
     let container: DIContainer
-    private var cancelBag = CancelBag()
+    private let cancelBag = CancelBag()
     
     init(container: DIContainer, topics: Loadable<[TopicModel]> = .notRequested) {
+        let appState = container.appState
+        
+        _routingState = .init(initialValue: appState.value.routing.photoMain)
         _topics = .init(initialValue: topics)
         
         self.container = container

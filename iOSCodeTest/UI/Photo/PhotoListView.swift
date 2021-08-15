@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PhotoListView: View {
-    //@Binding var data: Data
     @ObservedObject private(set) var viewModel:PhotoListViewModel
     
     var body: some View {
@@ -51,15 +50,14 @@ private extension PhotoListView {
     func loadedView(topic: TopicModel, photos: [PhotoModel]) -> some View {
         ScrollView {
             LazyVStack(spacing: 0.0) {
-                ForEach(photos) { photo in
-                    Button(action: {
-                    
-                    }, label: {
-                        PhotoImage(urlString: photo.urls.raw!) {
+                ForEach(photos.indices) { index in
+                    NavigationLink(destination: PhotoDetailView(photoIndex: index)) {
+                        PhotoImage(urlString: photos[index].urls.raw!) {
                             Text("")
                         }
                         .aspectRatio(contentMode: .fit)
-                    })
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
         }

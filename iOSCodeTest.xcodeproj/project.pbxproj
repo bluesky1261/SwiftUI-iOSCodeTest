@@ -34,6 +34,9 @@
 		B7A1179126C65FF800CAE909 /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1179026C65FF800CAE909 /* PhotoListViewModel.swift */; };
 		B7A1179426C9142800CAE909 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = B7A1179326C9142800CAE909 /* AlamofireImage */; };
 		B7A1179626C915F200CAE909 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1179526C915F200CAE909 /* ImageCache.swift */; };
+		B7A1179826C9286D00CAE909 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1179726C9286D00CAE909 /* PhotoDetailView.swift */; };
+		B7A1179A26C9288600CAE909 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1179926C9288600CAE909 /* PhotoDetailViewModel.swift */; };
+		B7A1179E26C976B200CAE909 /* SharedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1179D26C976B200CAE909 /* SharedObjects.swift */; };
 		B7BEFC8826C4B4DE000A44DA /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEFC8726C4B4DE000A44DA /* AppEnvironment.swift */; };
 		B7BEFC8A26C4B547000A44DA /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEFC8926C4B547000A44DA /* DependencyInjector.swift */; };
 		B7BEFC8C26C4B6FB000A44DA /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEFC8B26C4B6FB000A44DA /* Store.swift */; };
@@ -69,6 +72,9 @@
 		B7A1178E26C6106E00CAE909 /* NetworkingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHelpers.swift; sourceTree = "<group>"; };
 		B7A1179026C65FF800CAE909 /* PhotoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewModel.swift; sourceTree = "<group>"; };
 		B7A1179526C915F200CAE909 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		B7A1179726C9286D00CAE909 /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
+		B7A1179926C9288600CAE909 /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
+		B7A1179D26C976B200CAE909 /* SharedObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedObjects.swift; sourceTree = "<group>"; };
 		B7BEFC8726C4B4DE000A44DA /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		B7BEFC8926C4B547000A44DA /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		B7BEFC8B26C4B6FB000A44DA /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -189,6 +195,8 @@
 				B7A1178826C5F5FE00CAE909 /* PhotoMainViewModel.swift */,
 				62CA89E926A86DD5008CAA2A /* PhotoListView.swift */,
 				B7A1179026C65FF800CAE909 /* PhotoListViewModel.swift */,
+				B7A1179726C9286D00CAE909 /* PhotoDetailView.swift */,
+				B7A1179926C9288600CAE909 /* PhotoDetailViewModel.swift */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
@@ -252,6 +260,7 @@
 			children = (
 				B7BEFC8726C4B4DE000A44DA /* AppEnvironment.swift */,
 				622A6ED426A467A700975103 /* iOSCodeTestApp.swift */,
+				B7A1179D26C976B200CAE909 /* SharedObjects.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -355,14 +364,17 @@
 				B7A1179126C65FF800CAE909 /* PhotoListViewModel.swift in Sources */,
 				622A6ED526A467A700975103 /* iOSCodeTestApp.swift in Sources */,
 				622A6EFB26A4691800975103 /* Server.swift in Sources */,
+				B7A1179E26C976B200CAE909 /* SharedObjects.swift in Sources */,
 				B7BEFC8E26C4B72A000A44DA /* Loadable.swift in Sources */,
 				6288559126B5B2C500C0A2E6 /* SearchListView.swift in Sources */,
 				622A6EFC26A4691800975103 /* Codable+Extension.swift in Sources */,
+				B7A1179826C9286D00CAE909 /* PhotoDetailView.swift in Sources */,
 				B7A1177A26C50CF200CAE909 /* AppState.swift in Sources */,
 				B7A1177C26C50EF000CAE909 /* ServicesContainer.swift in Sources */,
 				622A6EF926A4691800975103 /* MainContentView.swift in Sources */,
 				B7A1178026C51A5300CAE909 /* LazyList.swift in Sources */,
 				B7A1178226C5F06600CAE909 /* PhotoService.swift in Sources */,
+				B7A1179A26C9288600CAE909 /* PhotoDetailViewModel.swift in Sources */,
 				B7A1178F26C6106E00CAE909 /* NetworkingHelpers.swift in Sources */,
 				B7A1178D26C60C7600CAE909 /* TopicService.swift in Sources */,
 				B7BEFC8A26C4B547000A44DA /* DependencyInjector.swift in Sources */,
