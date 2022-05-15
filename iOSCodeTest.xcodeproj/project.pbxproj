@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		620B2C132830E62100975FCD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 620B2C122830E62100975FCD /* Alamofire */; };
+		620B2C162830E64700975FCD /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 620B2C152830E64700975FCD /* AlamofireImage */; };
 		622A6ED526A467A700975103 /* iOSCodeTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622A6ED426A467A700975103 /* iOSCodeTestApp.swift */; };
 		622A6ED926A467AB00975103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 622A6ED826A467AB00975103 /* Assets.xcassets */; };
 		622A6EDC26A467AB00975103 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 622A6EDB26A467AB00975103 /* Preview Assets.xcassets */; };
@@ -17,7 +19,6 @@
 		622A6EFA26A4691800975103 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622A6EED26A4691800975103 /* Constant.swift */; };
 		622A6EFB26A4691800975103 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622A6EEE26A4691800975103 /* Server.swift */; };
 		622A6EFC26A4691800975103 /* Codable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622A6EF026A4691800975103 /* Codable+Extension.swift */; };
-		622A6F0126A4698300975103 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 622A6F0026A4698300975103 /* Alamofire */; };
 		626A028026A5500D0018F3FE /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A027F26A5500D0018F3FE /* ImageLoader.swift */; };
 		6288559126B5B2C500C0A2E6 /* SearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6288559026B5B2C500C0A2E6 /* SearchListView.swift */; };
 		62CA89EA26A86DD5008CAA2A /* PhotoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CA89E926A86DD5008CAA2A /* PhotoListView.swift */; };
@@ -32,7 +33,6 @@
 		B7A1178D26C60C7600CAE909 /* TopicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1178C26C60C7600CAE909 /* TopicService.swift */; };
 		B7A1178F26C6106E00CAE909 /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1178E26C6106E00CAE909 /* NetworkingHelpers.swift */; };
 		B7A1179126C65FF800CAE909 /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1179026C65FF800CAE909 /* PhotoListViewModel.swift */; };
-		B7A1179426C9142800CAE909 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = B7A1179326C9142800CAE909 /* AlamofireImage */; };
 		B7A1179626C915F200CAE909 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1179526C915F200CAE909 /* ImageCache.swift */; };
 		B7A1179826C9286D00CAE909 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1179726C9286D00CAE909 /* PhotoDetailView.swift */; };
 		B7A1179A26C9288600CAE909 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1179926C9288600CAE909 /* PhotoDetailViewModel.swift */; };
@@ -87,8 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				622A6F0126A4698300975103 /* Alamofire in Frameworks */,
-				B7A1179426C9142800CAE909 /* AlamofireImage in Frameworks */,
+				620B2C132830E62100975FCD /* Alamofire in Frameworks */,
+				620B2C162830E64700975FCD /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,8 +289,8 @@
 			);
 			name = iOSCodeTest;
 			packageProductDependencies = (
-				622A6F0026A4698300975103 /* Alamofire */,
-				B7A1179326C9142800CAE909 /* AlamofireImage */,
+				620B2C122830E62100975FCD /* Alamofire */,
+				620B2C152830E64700975FCD /* AlamofireImage */,
 			);
 			productName = iOSCodeTest;
 			productReference = 622A6ED126A467A700975103 /* iOSCodeTest.app */;
@@ -320,8 +320,8 @@
 			);
 			mainGroup = 622A6EC826A467A700975103;
 			packageReferences = (
-				622A6EFF26A4698300975103 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				B7A1179226C9142800CAE909 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				620B2C112830E62100975FCD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				620B2C142830E64700975FCD /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = 622A6ED226A467A700975103 /* Products */;
 			projectDirPath = "";
@@ -570,33 +570,33 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		622A6EFF26A4698300975103 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		620B2C112830E62100975FCD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.3;
+				minimumVersion = 5.0.0;
 			};
 		};
-		B7A1179226C9142800CAE909 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+		620B2C142830E64700975FCD /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.0;
+				minimumVersion = 4.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		622A6F0026A4698300975103 /* Alamofire */ = {
+		620B2C122830E62100975FCD /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 622A6EFF26A4698300975103 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 620B2C112830E62100975FCD /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		B7A1179326C9142800CAE909 /* AlamofireImage */ = {
+		620B2C152830E64700975FCD /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B7A1179226C9142800CAE909 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			package = 620B2C142830E64700975FCD /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
 		};
 /* End XCSwiftPackageProductDependency section */
